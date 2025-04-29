@@ -1,22 +1,42 @@
 'use client';
+import Image from 'next/image';
 
 const Footer = () => {
   const links = [
-    { name: 'About', href: '#' },
-    { name: 'Documentation', href: '#' },
-    { name: 'Run a Node', href: '#' },
-    { name: 'Developers', href: '#' },
-    { name: 'GitHub', href: '#' },
-    { name: 'Twitter', href: '#' },
-    { name: 'Discord', href: '#' },
+    { name: 'Telegram', href: 'https://t.me/ValidNet_Official', target: '_blank' },
+    { name: 'Twitter', href: 'https://x.com/ValidNet_', target: '_blank' },
+    { name: 'Dextools', href: '#', target: '_blank' },
+    { name: 'Dex Screener', href: '#', target: '_blank' },
   ];
 
   return (
-    <footer className="w-full bg-[#111111] text-white py-16">
-      <div className="w-full max-w-[1400px] mx-auto px-4">
+    <footer className="w-full bg-[#111111] text-white py-16 relative">
+      {/* 底部背景图 - 全屏宽度，位置底部居中，层级为1 */}
+      <div className="absolute bottom-0 left-0 w-full" style={{ zIndex: 1 }}>
+        <Image
+          src="/bg-bottom.png"
+          alt="Background"
+          width={1920}
+          height={1080}
+          className="w-full h-auto opacity-50 pointer-events-none"
+          style={{ objectFit: 'contain', objectPosition: 'bottom center' }}
+        />
+      </div>
+      
+      {/* 内容 - 确保在背景图之上 */}
+      <div className="w-full max-w-[1400px] mx-auto px-4 relative" style={{ zIndex: 10 }}>
         <div className="flex flex-col md:flex-row justify-between items-start">
           <div className="mb-8 md:mb-0">
-            <h2 className="text-2xl font-[Formula] mb-4">ValidNet</h2>
+            <div className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo-transparent.png"
+                alt="ValidNet Logo"
+                width={32}
+                height={32}
+                className="w-auto h-8"
+              />
+              <h2 className="text-2xl font-[Formula]">ValidNet</h2>
+            </div>
             <p className="text-gray-400 font-[Neue] max-w-md">
               A decentralized solution for AI validation, built on transparency and community participation.
             </p>
@@ -29,6 +49,8 @@ const Footer = () => {
                 <li key={index}>
                   <a
                     href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-gray-400 hover:text-[#2563eb] transition-colors font-[Neue]"
                   >
                     {link.name}

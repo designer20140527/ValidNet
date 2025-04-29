@@ -96,8 +96,8 @@ const FAQ = () => {
   ];
 
   return (
-    <section className="w-full flex justify-center px-4 py-20 bg-[#111111]">
-      <div className="w-full max-w-[1400px]">
+    <section className="w-full flex justify-center px-4 py-20 bg-[#111111] relative">
+      <div className="w-full max-w-[1400px] relative" style={{ zIndex: 10 }}>
         <h2 className="text-4xl font-[Formula] text-white text-center mb-12">FAQ</h2>
         <div className="bg-[#1A1A1A] rounded-2xl px-8">
           <div className="space-y-0">

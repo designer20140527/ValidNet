@@ -10,12 +10,20 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#ecf1f7] overflow-visible">
       <Header />
-      <div className="pt-28">
-        <Hero />
+      <Hero />
+      <div id="features">
         <Features />
+      </div>
+      <div id="tokenomics">
         <Tokenomics />
+      </div>
+      <div id="advantages">
         <Features2 />
-        <FAQ />
+      </div>
+      <div className="bg-[#111111]">
+        <div id="faq">
+          <FAQ />
+        </div>
         <Footer />
       </div>
     </div>

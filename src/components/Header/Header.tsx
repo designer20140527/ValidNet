@@ -25,19 +25,37 @@ const Header = () => {
   }, []);
 
   const menuItems = [
-    { name: 'DePIN', desc: 'Collaborative Infrastructure' },
-    { name: 'AI', desc: 'Compute Economy' },
-    { name: 'Stream', desc: 'P2P Content Network' },
-    { name: 'Storage', desc: 'S3 Compatible' },
-    { name: 'Pin', desc: 'IPFS' },
+    { name: 'Home', desc: 'Validate Intelligence', target: 'home' },
+    { name: 'Features', desc: 'Core Features', target: 'features' },
+    { name: '$VAT', desc: 'Tokenomics', target: 'tokenomics' },
+    { name: 'Advantages', desc: 'Why ValidNet', target: 'advantages' },
+    { name: 'FAQ', desc: 'Frequently Asked Questions', target: 'faq' },
   ];
 
   const socialLinks = [
-    { name: 'Telegram', url: '#' },
-    { name: 'Twitter', url: '#' },
+    { name: 'Telegram', url: 'https://t.me/ValidNet_Official' },
+    { name: 'Twitter', url: 'https://x.com/ValidNet_' },
     { name: 'Dextools', url: '#' },
     { name: 'Dex Screener', url: '#' },
   ];
+
+  // 处理平滑滚动
+  const handleScroll = (target: string, e: React.MouseEvent) => {
+    e.preventDefault();
+    
+    if (target === 'home') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    
+    const element = document.getElementById(target);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <header className="w-full flex justify-center px-4 py-5 fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
@@ -61,15 +79,16 @@ const Header = () => {
           {menuItems.map((item, index) => (
             <div key={item.name} className="flex items-stretch flex-1">
               {/* 使用覆盖整个区域的hover目标 */}
-              <Link
-                href="#"
+              <a
+                href={`#${item.target}`}
+                onClick={(e) => handleScroll(item.target, e)}
                 className="px-4 py-4 hover:bg-black transition-colors w-full flex items-center group"
               >
                 <div className="flex flex-col items-center text-center w-full">
                   <span className="text-base font-[Formula] text-gray-900 group-hover:text-blue-600 transition-colors">{item.name}</span>
                   <span className="text-sm font-[Neue] text-gray-500 group-hover:text-blue-400 transition-colors">{item.desc}</span>
                 </div>
-              </Link>
+              </a>
               {index < menuItems.length - 1 && (
                 <div className="w-px bg-black self-stretch" />
               )}
@@ -126,13 +145,15 @@ const Header = () => {
           {isMenuOpen && (
             <div className="absolute right-0 top-[calc(100%+10px)] w-48 bg-[#ecf1f7] border border-black rounded-xl shadow-lg py-0 overflow-hidden">
               {socialLinks.map((link) => (
-                <Link
+                <a
                   key={link.name}
                   href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block px-4 py-3 text-base font-[Neue] text-gray-700 hover:bg-black hover:text-blue-600"
                 >
                   {link.name}
-                </Link>
+                </a>
               ))}
             </div>
           )}

@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 interface FeatureItemProps {
   title: string;
   isLast?: boolean;
@@ -41,8 +43,14 @@ const Features2 = () => {
 
             {/* Right Column - Image Container */}
             <div className="p-8 flex items-center justify-center">
-              <div className="bg-black w-full h-[400px] rounded-xl">
-                {/* Image placeholder */}
+              <div className="w-full h-[400px] flex items-center justify-center overflow-visible">
+                <Image 
+                  src="/image-2.png" 
+                  alt="ValidNet Features" 
+                  width={500} 
+                  height={400}
+                  style={{ objectFit: 'contain' }}
+                />
               </div>
             </div>
           </div>
