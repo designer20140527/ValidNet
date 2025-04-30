@@ -195,3 +195,8 @@ html, body, #__next {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* 滚动偏移样式 */
+html {
+  scroll-padding-top: 95px; /* 为所有滚动目标提供顶部偏移 */
+}

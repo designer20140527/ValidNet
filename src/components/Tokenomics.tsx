@@ -20,13 +20,26 @@ const UtilityIcon = ({ type }: { type: string }) => {
         <path d="M20 12V8H6a2 2 0 01-2-2c0-1.1.9-2 2-2h12V0L24 6l-4 6v-4zm-4 12v-4H4a2 2 0 01-2-2c0-1.1.9-2 2-2h12v-4l4 6-4 6z" fill="currentColor" />
       )}
       {type === 'earn' && (
-        <path d="M12 8V4l8 8-8 8v-4H4V8h8z" fill="currentColor" />
+        <g>
+          <circle cx="12" cy="12" r="9" stroke="currentColor" strokeWidth="2" fill="none" />
+          <circle cx="12" cy="12" r="6.5" fill="currentColor" stroke="currentColor" strokeWidth="0.5" />
+          <path d="M12 7v2M12 15v2" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+          <path d="M10 12h4" stroke="white" strokeWidth="1.5" strokeLinecap="round" />
+        </g>
       )}
       {type === 'anchor' && (
-        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10zm0-14a2 2 0 100-4 2 2 0 000 4zm-6 8h12M12 22V12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <g>
+          <path d="M12 2L4 6V12C4 16.42 7.28 20.44 12 22C16.72 20.44 20 16.42 20 12V6L12 2Z" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path d="M12 22V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+        </g>
       )}
       {type === 'governance' && (
-        <path d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0112 20.055a11.952 11.952 0 01-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <g>
+          <path d="M2 6H22M12 2V10M12 10L16 6M12 10L8 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <rect x="4" y="12" width="16" height="10" rx="1" stroke="currentColor" strokeWidth="2" fill="none" />
+          <path d="M10 16.5L11.5 18L14 15.5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </g>
       )}
     </svg>
   );

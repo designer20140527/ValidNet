@@ -62,7 +62,7 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-[#2a2a2a] mt-12 pt-8 text-gray-500 font-[Neue] text-sm">
-          <p>© 2023 ValidNet. All rights reserved.</p>
+          <p>© 2025 ValidNet. All rights reserved.</p>
         </div>
       </div>
     </footer>
