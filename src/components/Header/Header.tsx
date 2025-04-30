@@ -58,7 +58,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full flex justify-center px-4 py-5 fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <header className="w-full flex justify-center px-4 py-5 fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent hidden sm:flex">
       <div className="w-full max-w-[1400px] bg-[#ecf1f7] rounded-xl border border-black flex items-stretch py-0">
         {/* Logo */}
         <Link href="/" className="px-8 flex items-center">

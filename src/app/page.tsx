@@ -1,4 +1,5 @@
 import Header from '@/components/Header/Header';
+import MobileHeader from '@/components/Header/MobileHeader';
 import Hero from '@/components/Hero';
 import Features from '@/components/Features';
 import Tokenomics from '@/components/Tokenomics';
@@ -10,6 +11,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#ecf1f7] overflow-visible">
       <Header />
+      <MobileHeader />
       <Hero />
       <div id="features">
         <Features />

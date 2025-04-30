@@ -11,7 +11,7 @@ interface FeatureCardProps {
 }
 
 const FeatureCard = ({ title, description, className = '', icon }: FeatureCardProps) => (
-  <div className={`features-card bg-[#1A1A1A] rounded-2xl p-8 w-[440px] md:w-[320px] xl:w-[440px] ${className}`}>
+  <div className={`features-card bg-[#1A1A1A] rounded-2xl p-8 w-full sm:w-[440px] md:w-[320px] xl:w-[440px] ${className}`}>
     <div className="flex items-center gap-4 mb-4">
       <div className="w-12 h-12 flex items-center justify-center shrink-0">
         <svg className="w-8 h-8 text-[#2563eb]" viewBox="0 0 24 24" fill="none">
@@ -47,10 +47,10 @@ const FeatureCard = ({ title, description, className = '', icon }: FeatureCardPr
           )}
         </svg>
       </div>
-      <h3 className="text-2xl md:text-xl xl:text-2xl font-[Formula] text-white">{title}</h3>
+      <h3 className="text-xl sm:text-2xl md:text-xl xl:text-2xl font-[Formula] text-white">{title}</h3>
     </div>
-    <p className="text-gray-400 font-[Neue] leading-relaxed mb-6 md:text-sm xl:text-base">{description}</p>
-    <Button className="text-sm px-6 [&.alternative]:bg-[#2563eb] [&.alternative]:text-white [&.alternative.in:not(.out)]:bg-black [&.alternative.in:not(.out)]:text-[#2563eb]">Learn More</Button>
+    <p className="text-sm sm:text-base md:text-sm xl:text-base font-[Neue] text-gray-400 leading-relaxed mb-6">{description}</p>
+    <Button className="text-xs sm:text-sm px-6 [&.alternative]:bg-[#2563eb] [&.alternative]:text-white [&.alternative.in:not(.out)]:bg-black [&.alternative.in:not(.out)]:text-[#2563eb]">Learn More</Button>
   </div>
 );
 
@@ -58,7 +58,59 @@ const Features = () => {
   return (
     <section className="w-full flex justify-center px-4 py-20 bg-[#111111]">
       <div className="w-full max-w-[1400px] relative">
-        <div className="grid grid-cols-[1fr_auto_1fr] md:grid-cols-1 xl:grid-cols-[1fr_auto_1fr] gap-4">
+        {/* Mobile layout - Only show on mobile */}
+        <div className="block sm:hidden">
+          <div className="flex flex-col items-center mb-10">
+            <div className="relative w-[250px] h-[250px] flex items-center justify-center overflow-visible mb-6">
+              <div className="absolute animate-float">
+                <Image 
+                  src="/image-1.png" 
+                  alt="ValidNet Core Features" 
+                  width={300} 
+                  height={300}
+                  style={{ objectFit: 'contain' }}
+                />
+              </div>
+              <span className="text-3xl font-[Formula] text-white z-10">Core Features</span>
+            </div>
+          </div>
+          
+          <div className="flex flex-col gap-6">
+            <FeatureCard
+              icon="node"
+              title="Lightweight Node Participation"
+              description="Run a ValidNet node on desktop or Docker with no special hardware required. Any computer can contribute a computer to validate AI outputs."
+            />
+            <FeatureCard
+              icon="anchor"
+              title="Memory Anchors"
+              description="Modular, reusable templates that define how AI outputs are verified. Users can create, trade, and earn from anchors used in tasks."
+            />
+            <FeatureCard
+              icon="transparency"
+              title="On-Chain Transparency"
+              description="All actions and results are recorded on-chain. Smart contracts handle reward distribution and task coordination automatically."
+            />
+            <FeatureCard
+              icon="proof"
+              title="Proof-of-Validation (PoV)"
+              description="Each task is verified by multiple nodes. Results are cross-checked and stored on-chain, ensuring reliable and trustless validation."
+            />
+            <FeatureCard
+              icon="builder"
+              title="Anchor Builder Tools"
+              description="Create custom validation tasks with your own rules and logic. Earn royalties whenever your anchors are used by the network."
+            />
+            <FeatureCard
+              icon="incentive"
+              title="Dual-Layer Incentive & Punishment"
+              description="Nodes must stake $VAT to participate. Correct results are rewarded based on task pricing, performance, and uptime. Wrong answers = slash the stake. "
+            />
+          </div>
+        </div>
+
+        {/* Original layout - iPads and desktop */}
+        <div className="hidden sm:grid grid-cols-[1fr_auto_1fr] md:grid-cols-1 xl:grid-cols-[1fr_auto_1fr] gap-4">
           {/* Center Image - For iPad, show at top */}
           <div className="hidden md:flex md:col-span-1 xl:hidden items-center justify-center mb-12">
             <div className="relative w-[400px] h-[400px] flex items-center justify-center overflow-visible">
@@ -117,17 +169,18 @@ const Features = () => {
           </div>
 
           {/* Original Desktop Layout - Only show on desktop */}
-          <div className="flex flex-col gap-8 self-start xl:block hidden">
+          <div className="flex flex-col gap-12 self-start xl:block md:hidden">
             <FeatureCard
               icon="node"
               title="Lightweight Node Participation"
               description="Run a ValidNet node on desktop or Docker with no special hardware required. Any computer can contribute a computer to validate AI outputs."
-              className="translate-x-16"
+              className="translate-x-16 mb-12"
             />
             <FeatureCard
               icon="anchor"
               title="Memory Anchors"
               description="Modular, reusable templates that define how AI outputs are verified. Users can create, trade, and earn from anchors used in tasks."
+              className="mb-12"
             />
             <FeatureCard
               icon="transparency"
@@ -138,7 +191,7 @@ const Features = () => {
           </div>
 
           {/* Center Image Container - Only show on desktop */}
-          <div className="flex items-center justify-center xl:block hidden">
+          <div className="flex items-center justify-center h-full xl:flex md:hidden">
             <div className="relative w-[500px] h-[500px] flex items-center justify-center overflow-visible">
               <div className="absolute animate-float">
                 <Image 
@@ -154,17 +207,18 @@ const Features = () => {
           </div>
 
           {/* Right Column - Only show on desktop */}
-          <div className="flex flex-col gap-8 self-start items-end xl:block hidden">
+          <div className="flex flex-col gap-12 self-start items-end xl:block md:hidden">
             <FeatureCard
               icon="proof"
               title="Proof-of-Validation (PoV)"
               description="Each task is verified by multiple nodes. Results are cross-checked and stored on-chain, ensuring reliable and trustless validation."
-              className="-translate-x-16"
+              className="-translate-x-16 mb-12"
             />
             <FeatureCard
               icon="builder"
               title="Anchor Builder Tools"
               description="Create custom validation tasks with your own rules and logic. Earn royalties whenever your anchors are used by the network."
+              className="mb-12"
             />
             <FeatureCard
               icon="incentive"

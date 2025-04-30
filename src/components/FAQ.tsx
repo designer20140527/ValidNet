@@ -18,9 +18,9 @@ const AccordionItem = ({ question, answer, isOpen, onClick, isLast }: AccordionI
           className="flex justify-between items-center w-full py-8 text-left"
           onClick={onClick}
         >
-          <h3 className="text-xl font-[Formula] text-white">{question}</h3>
+          <h3 className="text-base sm:text-xl font-[Formula] text-white">{question}</h3>
           <svg
-            className={`w-6 h-6 text-[#2563eb] transform transition-transform duration-300 ${
+            className={`w-5 h-5 sm:w-6 sm:h-6 text-[#2563eb] transform transition-transform duration-300 ${
               isOpen ? 'rotate-180' : ''
             }`}
             fill="none"
@@ -42,7 +42,7 @@ const AccordionItem = ({ question, answer, isOpen, onClick, isLast }: AccordionI
           isOpen ? 'max-h-[200px] opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
-        <p className="text-gray-400 font-[Neue] leading-relaxed mt-0 mb-8">{answer}</p>
+        <p className="text-xs sm:text-base text-gray-400 font-[Neue] leading-relaxed mt-0 mb-8">{answer}</p>
       </div>
       
       {!isLast && (
@@ -98,8 +98,8 @@ const FAQ = () => {
   return (
     <section className="w-full flex justify-center px-4 py-20 bg-[#111111] relative">
       <div className="w-full max-w-[1400px] relative" style={{ zIndex: 10 }}>
-        <h2 className="text-4xl font-[Formula] text-white text-center mb-12">FAQ</h2>
-        <div className="bg-[#1A1A1A] rounded-2xl px-8">
+        <h2 className="text-3xl sm:text-4xl font-[Formula] text-white text-center mb-12">FAQ</h2>
+        <div className="bg-[#1A1A1A] rounded-2xl px-6 sm:px-8">
           <div className="space-y-0">
             {faqItems.map((item, index) => (
               <AccordionItem

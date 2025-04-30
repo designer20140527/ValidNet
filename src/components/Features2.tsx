@@ -21,7 +21,41 @@ const Features2 = () => {
     <section className="w-full flex justify-center px-4 py-20 bg-[#111111]">
       <div className="w-full max-w-[1400px]">
         <div className="bg-[#ecf1f7] border border-black rounded-2xl overflow-hidden">
-          <div className="grid grid-cols-[1fr_1px_1fr]">
+          {/* 手机版布局 - 上下结构 */}
+          <div className="flex flex-col sm:hidden">
+            {/* 上部图像容器 */}
+            <div className="px-4 py-6 flex items-center justify-center border-b border-black">
+              <div className="w-full h-[240px] flex items-center justify-center">
+                <Image 
+                  src="/image-2.png" 
+                  alt="ValidNet Features" 
+                  width={280} 
+                  height={240}
+                  style={{ objectFit: 'contain', maxWidth: '100%', maxHeight: '100%' }}
+                  className="object-contain"
+                />
+              </div>
+            </div>
+            
+            {/* 下部功能列表 */}
+            <div className="relative pt-2">
+              <div className="flex flex-col">
+                {items.map((item, index) => (
+                  <div key={index} className="relative">
+                    <div className="p-5 flex items-center">
+                      <h3 className="text-sm sm:text-base md:text-lg font-[Formula] text-black">{item}</h3>
+                    </div>
+                    {index < items.length - 1 && (
+                      <div className="absolute bottom-0 left-0 right-0 h-px bg-black" />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          {/* 原始布局 - 左右结构（平板和桌面） */}
+          <div className="hidden sm:grid grid-cols-[1fr_1px_1fr]">
             {/* Left Column - Features List */}
             <div className="relative">
               <div className="grid grid-rows-6">
