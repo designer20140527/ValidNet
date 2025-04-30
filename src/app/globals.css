@@ -79,12 +79,19 @@ html, body, #__next {
   color: var(--c, var(--color));
   background: var(--b, var(--background));
   transition: color .2s linear var(--c-d, .2s), background .3s linear var(--b-d, .2s);
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
 }
 
 /* Features section specific button styles */
 .features-card .button {
   padding: 12px 24px;
   font-size: 14px;
+  --background: #2563eb;
+  --background-hover: #000000;
+  --hover-back: #000000;
+  --hover-front: #000000; 
 }
 
 .features-card .button.alternative {

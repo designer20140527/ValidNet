@@ -40,7 +40,7 @@ const Hero = () => {
           <div 
             className={`flex justify-center md:justify-start transition-all duration-700 delay-600 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
           >
-            <Button>Gitbook</Button>
+            <Button href="https://validnet.gitbook.io/docs" target="_blank">Gitbook</Button>
           </div>
         </div>
         

@@ -80,7 +80,16 @@ const FeatureCard = ({ title, description, className = '', icon, delay = 0 }: Fe
         <h3 className="text-xl sm:text-2xl md:text-xl xl:text-2xl font-[Formula] text-white">{title}</h3>
       </div>
       <p className="text-sm sm:text-base md:text-sm xl:text-base font-[Neue] text-gray-400 leading-relaxed mb-6">{description}</p>
-      <Button className="text-xs sm:text-sm px-6 [&.alternative]:bg-[#2563eb] [&.alternative]:text-white [&.alternative.in:not(.out)]:bg-black [&.alternative.in:not(.out)]:text-[#2563eb]">Learn More</Button>
+      <div className="relative">
+        <Button 
+          href="https://validnet.gitbook.io/docs" 
+          target="_blank" 
+          variant="alternative"
+          className="text-xs sm:text-sm px-6"
+        >
+          Learn More
+        </Button>
+      </div>
     </div>
   );
 };

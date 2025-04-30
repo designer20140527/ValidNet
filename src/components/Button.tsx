@@ -6,10 +6,12 @@ interface ButtonProps {
   children: string;
   className?: string;
   variant?: 'alternative' | 'simple';
+  href?: string;
+  target?: string;
 }
 
-const Button = ({ children, className = '', variant = 'alternative' }: ButtonProps) => {
-  const buttonRef = useRef<HTMLButtonElement>(null);
+const Button = ({ children, className = '', variant = 'alternative', href, target }: ButtonProps) => {
+  const buttonRef = useRef<HTMLAnchorElement | HTMLButtonElement>(null);
 
   useEffect(() => {
     const button = buttonRef.current;
@@ -59,9 +61,23 @@ const Button = ({ children, className = '', variant = 'alternative' }: ButtonPro
     };
   }, [children]);
 
+  if (href) {
+    return (
+      <a
+        href={href}
+        ref={buttonRef as React.RefObject<HTMLAnchorElement>}
+        className={`button ${variant} ${className}`}
+        target={target}
+        rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+      >
+        {children}
+      </a>
+    );
+  }
+
   return (
     <button
-      ref={buttonRef}
+      ref={buttonRef as React.RefObject<HTMLButtonElement>}
       className={`button ${variant} ${className}`}
     >
       {children}
