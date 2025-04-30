@@ -24,7 +24,7 @@ const Hero = () => {
         </div>
         
         {/* Right Content - Globe */}
-        <div className="flex-1 flex items-center justify-center overflow-visible" style={{ position: 'relative', height: '280px', maxHeight: '35vh', width: '100%', marginBottom: '30px' }}>
+        <div className="flex-1 flex items-center justify-center overflow-visible" style={{ position: 'relative', height: '320px', maxHeight: '40vh', width: '100%', marginBottom: '30px' }}>
           <div style={{ 
             position: 'absolute', 
             width: '600px', 
@@ -34,7 +34,7 @@ const Hero = () => {
             transform: 'translate(-50%, -50%)',
             zIndex: 0
           }}
-          className="sm:!w-[600px] sm:!h-[600px] md:!w-[800px] md:!h-[800px] xl:!w-[1400px] xl:!h-[1400px] md:!left-[80%]"
+          className="sm:!w-[650px] sm:!h-[650px] md:!w-[900px] md:!h-[900px] xl:!w-[1500px] xl:!h-[1500px] md:!left-[80%]"
           >
             <World 
               globeConfig={{
@@ -44,7 +44,9 @@ const Hero = () => {
                 directionalTopLight: "#ffffff", 
                 pointLight: "#ffffff",
                 atmosphereColor: "#1e90ff",
-                emissive: "#220033"
+                emissive: "#220033",
+                emissiveIntensity: 0.15,
+                atmosphereAltitude: 0.1
               }} 
               data={arcsData} 
             />

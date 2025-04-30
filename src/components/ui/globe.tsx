@@ -18,7 +18,7 @@ extend({ ThreeGlobe: ThreeGlobe });
  
 const RING_PROPAGATION_SPEED = 3;
 const aspect = 1;
-const cameraZ = 500;
+const cameraZ = 450;
  
 type Position = {
   order: number;
@@ -239,66 +239,58 @@ export function WebGLRendererConfig() {
   const { gl, size } = useThree();
  
   useEffect(() => {
-    gl.setPixelRatio(window.devicePixelRatio);
-    gl.setSize(size.width, size.height);
-    gl.setClearColor(0x000000, 0);
-  }, []);
+    if (typeof window !== 'undefined') {
+      gl.setPixelRatio(window.devicePixelRatio);
+      gl.setSize(size.width, size.height, false);
+      gl.setClearColor(0x000000, 0);
+    }
+  }, [gl, size]);
  
   return null;
 }
  
 export function World(props: WorldProps) {
-  const { globeConfig } = props;
-  const scene = new Scene();
-  scene.fog = new Fog(0xffffff, 400, 2000);
   return (
-    <Canvas 
-      scene={scene} 
-      style={{ 
-        position: 'absolute',
-        width: '100%', 
-        height: '100%',
-        pointerEvents: 'auto'
-      }}
-      camera={new PerspectiveCamera(35, aspect, 150, 2000)}
-    >
+    <Canvas camera={{ position: [0, 0, cameraZ], near: 1, far: 2000, fov: 45 }}>
+      <ambientLight color={props.globeConfig.ambientLight || "#ffffff"} intensity={0.2} />
       <WebGLRendererConfig />
-      <ambientLight color={globeConfig.ambientLight} intensity={0.6} />
-      <directionalLight
-        color={globeConfig.directionalLeftLight}
-        position={new Vector3(-400, 100, 400)}
-      />
-      <directionalLight
-        color={globeConfig.directionalTopLight}
-        position={new Vector3(-200, 500, 200)}
-      />
-      <pointLight
-        color={globeConfig.pointLight}
-        position={new Vector3(-200, 500, 200)}
-        intensity={0.8}
-      />
-      <Globe {...props} />
       <OrbitControls
         enablePan={false}
         enableZoom={false}
-        minDistance={cameraZ}
-        maxDistance={cameraZ}
-        autoRotateSpeed={0.5}
-        autoRotate={true}
-        minPolarAngle={Math.PI / 3.5}
-        maxPolarAngle={Math.PI - Math.PI / 3}
+        minDistance={200}
+        maxDistance={500}
+        autoRotate={props.globeConfig.autoRotate}
+        autoRotateSpeed={props.globeConfig.autoRotateSpeed || 0.3}
+        enableRotate={true}
       />
+      <directionalLight
+        position={[-400, 100, 400]}
+        color={props.globeConfig.directionalLeftLight || "#ffffff"}
+        intensity={0.2}
+      />
+      <directionalLight
+        position={[-200, 500, 200]}
+        color={props.globeConfig.directionalTopLight || "#ffffff"}
+        intensity={0.2}
+      />
+      <pointLight
+        position={[200, 400, 200]}
+        color={props.globeConfig.pointLight || "#ffffff"}
+        intensity={0.2}
+      />
+      <Globe {...props} />
     </Canvas>
   );
 }
  
 export function hexToRgb(hex: string) {
-  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-  hex = hex.replace(shorthandRegex, function (m, r, g, b) {
+  // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
+  const shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+  hex = hex.replace(shorthandRegex, (m, r, g, b) => {
     return r + r + g + g + b + b;
   });
  
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         r: parseInt(result[1], 16),
@@ -314,6 +306,5 @@ export function genRandomNumbers(min: number, max: number, count: number) {
     const r = Math.floor(Math.random() * (max - min)) + min;
     if (arr.indexOf(r) === -1) arr.push(r);
   }
- 
   return arr;
 } 
