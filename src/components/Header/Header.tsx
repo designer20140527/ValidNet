@@ -33,7 +33,7 @@ const Header = () => {
   ];
 
   const socialLinks = [
-    { name: 'Telegram', url: 'https://t.me/ValidNet_Official' },
+    { name: 'Telegram', url: 'https://t.me/ValidNet_Portal' },
     { name: 'Twitter', url: 'https://x.com/ValidNet_' },
     { name: 'Dextools', url: '#' },
     { name: 'Dex Screener', url: '#' },
