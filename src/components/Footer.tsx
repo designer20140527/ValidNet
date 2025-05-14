@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const Footer = () => {
   const links = [
-    { name: 'Telegram', href: 'https://t.me/ValidNet_Official', target: '_blank' },
+    { name: 'Telegram', href: 'https://t.me/ValidNet_Portal', target: '_blank' },
     { name: 'Twitter', href: 'https://x.com/ValidNet_', target: '_blank' },
     { name: 'Dextools', href: '#', target: '_blank' },
     { name: 'Dex Screener', href: '#', target: '_blank' },
